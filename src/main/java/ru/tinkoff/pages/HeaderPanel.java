@@ -1,18 +1,25 @@
 package ru.tinkoff.pages;
 
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Selenide.*;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$$;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+
 
 public class HeaderPanel {
-    private final WebDriver driver;
 
-    public HeaderPanel(WebDriver driver) {
-        this.driver = driver;
+    public HeaderPanel() {
+
     }
 
-    public void isLoaded() {
-        $$("#footer_30sCr").findBy(text("English")).click();
+    public void clickOnAllHeaderLinks() {
+        ElementsCollection buttons = $$(".header__240ro").shouldBe(sizeGreaterThan(0));
+        for(int i = 0; i < buttons.size(); i++) {
+            ElementsCollection new_buttons = $$(".header__240ro").shouldBe(sizeGreaterThan(0));
+            System.out.print("Go to button: ");
+            System.out.println(new_buttons.get(i).getText());
+            new_buttons.get(i).waitUntil(Condition.enabled,10000).click();
+        }
     }
 }
