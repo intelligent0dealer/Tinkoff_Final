@@ -10,7 +10,6 @@ import com.codeborne.selenide.ElementsCollection;
 public class HeaderPanel {
 
     public HeaderPanel() {
-
     }
 
     public void clickOnAllHeaderLinks() {
