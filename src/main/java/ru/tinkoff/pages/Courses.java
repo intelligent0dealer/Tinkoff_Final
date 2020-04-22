@@ -1,39 +1,34 @@
 package ru.tinkoff.pages;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
-
 public class Courses {
+
+    public static SelenideElement leftDropMenu = $(By.id("TCSid1"));
+    public static SelenideElement rightDropMenu = $(By.id("TCSid3"));
+    SelenideElement tableTitle = $(".DesktopExchange__tableRoot_1MoWP");
+    ElementsCollection dropMenuCourses = $$(".Dropdown__content_3KxXb");
+
+
     public Courses() {
     }
 
-    public void checkCourse() {
-        $(By.id("TCSid1")).shouldHave(exactText("Рубль")).click();
-        $(By.id("TCSid3")).shouldHave(exactText("Евро")).click();
+    public void checkCourse(String curr_left,String curr_right) {
+        leftDropMenu.shouldHave(exactText(curr_left));
+        rightDropMenu.shouldHave(exactText(curr_right));
     }
 
-    public void checkCourseTable() {
-        $(".DesktopExchange__tableRoot_1MoWP").shouldHave(text("€"));
-        $(".DesktopExchange__tableRoot_1MoWP").shouldHave(text("₽"));
+    public void checkCourseTable(String сurr_table_first, String curr_table_second) {
+        tableTitle.shouldHave(text(сurr_table_first));
+        tableTitle.shouldHave(text(curr_table_second));
     }
 
-    public void switchElement() {
-        $(By.id("TCSid1")).click();
-        $$(".Dropdown__content_3KxXb").findBy(text("Евро")).click();
-        $(By.id("TCSid1")).shouldHave(text("Евро"));
-        $(By.id("TCSid3")).shouldHave(text("Рубль"));
-    }
-
-    public void switchElementToDollar() {
-        $(By.id("TCSid3")).click();
-        $$(".Dropdown__content_3KxXb").findBy(text("Доллар")).click();
-        $(By.id("TCSid3")).shouldHave(text("Доллар"));
-    }
-
-    public void checkCourseTableDollar() {
-        $(".DesktopExchange__tableRoot_1MoWP").shouldHave(text("€"));
-        $(".DesktopExchange__tableRoot_1MoWP").shouldHave(text("$"));
+    public void switchElement(SelenideElement element, String text) {
+        element.click();
+        dropMenuCourses.findBy(text(text)).click();
     }
 }

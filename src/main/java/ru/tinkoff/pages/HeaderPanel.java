@@ -10,6 +10,7 @@ import static org.openqa.selenium.By.className;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -19,21 +20,26 @@ import org.openqa.selenium.support.Color;
 
 public class HeaderPanel {
 
+    ElementsCollection header = $$(".header__240ro");
+    SelenideElement title = $(".title");
+    SelenideElement linedButton = $(".header__n-Ztx.header__3dzNq");
+
+
+
     public HeaderPanel() {
-        WebDriver driver;
     }
 
     public void clickOnAllHeaderLinks() {
-        ElementsCollection buttons = $$(".header__240ro").shouldBe(sizeGreaterThan(0));
+        ElementsCollection buttons = header.shouldBe(sizeGreaterThan(0));
         for(int i = 0; i < buttons.size(); i++) {
             System.out.println("Button text:" + buttons.get(i).text());
-            $$(".header__240ro").findBy(text(buttons.get(i).text())).waitUntil(Condition.enabled,10000).click();
-            $(".title").shouldNotHave(text("Такой страницы нет"));
+            header.findBy(text(buttons.get(i).text())).waitUntil(Condition.enabled,10000).click();
+            title.shouldNotHave(text("Такой страницы нет"));
             if(i!=0)
                 back();
         }
     }
-    public void colourTest(){
-        $(".header__n-Ztx.header__3dzNq").shouldHave(text("Курсы валют"));
+    public void buttonLined() {
+        linedButton.shouldHave(text("Курсы валют"));
     }
 }
