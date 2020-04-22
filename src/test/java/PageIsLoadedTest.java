@@ -1,8 +1,5 @@
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideConfig;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import ru.tinkoff.pages.MainPage;
 import config.SelenideCfg;
 import static com.codeborne.selenide.Selenide.open;
@@ -14,7 +11,7 @@ public class PageIsLoadedTest {
     @Before
     public void setUp() {
         config = new SelenideCfg();
-        open("/exchange");
+        open("/");
     }
 
     @Test

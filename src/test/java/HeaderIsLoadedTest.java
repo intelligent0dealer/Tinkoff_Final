@@ -17,4 +17,9 @@ public class HeaderIsLoadedTest {
         HeaderPanel headerPanel = new HeaderPanel();
         headerPanel.clickOnAllHeaderLinks();
     }
+    @Test
+    public void buttonIsLined() {
+        HeaderPanel headerPanel = new HeaderPanel();
+        headerPanel.colourTest();
+    }
 }
