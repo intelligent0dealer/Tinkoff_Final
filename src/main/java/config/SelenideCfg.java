@@ -11,7 +11,6 @@ public class SelenideCfg {
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
         Configuration.baseUrl = "https://www.tinkoff.ru/about/exchange";
-
     }
 }
 

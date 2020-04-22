@@ -30,9 +30,6 @@ public class PageIsLoadedTest {
         header.clickOnAllHeaderLinks();
         header.buttonLined();
         footer.clickOnAllFooterElements();
-    }
-    @Test
-    public void tinkoffTestPageCourses() {
         courses.checkCourse("Рубль", "Евро");
         courses.checkCourseTable("€", "₽");
         courses.switchElement(leftDropMenu, "Евро");
